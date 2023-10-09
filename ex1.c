@@ -1,34 +1,39 @@
-#include <stdio.h>
 #include <stdlib.h>
+#include <stdio.h>
 
-#define TAILLE 50
+int main(int argc, char const *argv[])
+{
+	int n, nbp = 0, nbn = 0;
+	printf("Veuillez entrer un nombre : ");
+	scanf("%d", &n);
+	int* tabPos = (int*) malloc (n*sizeof(int));
+	int* tabNeg = (int*) malloc (n*sizeof(int));
 
-int main(){
-	double tab[TAILLE] = {0};
-	int x;
-	int val = 0;
-
-	printf("Entrez les notes ds etudiants, Ctrl-D pour terminer :\n");
-	
-	while (scanf("%d", &x) != EOF && val < TAILLE){
-		tab[val] = x;
-		//scanf("%lf", &x);
-		val++;
-	};
-	printf("OK\n");
-	double somme;
-	double res;
-	double moyenne;
-	for(int i= 0; i<val; i++){
-		somme += tab[i];
-	};
-	moyenne = somme / val;
-	printf("moyenne : %lf", moyenne);
-	printf("Ecarts des etudiants par rapport a la moyenne : \n");
-
-	for(int i= 0; i<val; i++){
-		res = moyenne - tab[i];
-		printf("Etudiant %d : %lf - %lf = %lf \n", (i+1), tab[i], moyenne, res);
+	for (int i = 0; i < n; i++){
+		int y;
+		scanf("%d", &y);
+		if(y >= 0){
+			tabPos[nbp] = y;
+			nbp++;
+		}
+		else{
+			tabNeg[nbn] = y;
+			nbn++;
+		}
 	};
 
+	for(int i=0; i< nbp; i++){
+		printf("%d\t", tabPos[i]);
+	};
+	printf("\n");
+
+	for (int i = 0; i < nbn; ++i)
+	{
+		printf("%d\t", tabNeg[i]);
+	};
+	printf("\n");
+
+	free(tabPos);
+	free(tabNeg);
+	exit(0);
 }
