@@ -51,6 +51,7 @@ int main(int argc, char const *argv[])
 		if(tourAX == true){
 			printf("la colonne où va jouer le joueur X : ");
 			scanf("%d", &colonneX);
+			if(colonneX == 0) break;
 			colonneX -= 1;
 			if(m[compteurLigneX][colonneX] == '.'){
 				m[compteurLigneX][colonneX] = 'X';
@@ -77,6 +78,7 @@ int main(int argc, char const *argv[])
 		if(tourAX == false){
 			printf("la colonne où va jouer le joueur O : ");
 			scanf("%d", &colonneO);	
+			if(colonneO == 0) break;
 			colonneO -= 1;
 			if(m[compteurLigneO][colonneO] == '.'){
 			m[compteurLigneO][colonneO] = 'O';
